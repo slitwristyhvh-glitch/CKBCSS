@@ -1,0 +1,553 @@
+/* ==========================================================================
+   CYTUBE MASTER STYLE SHEET V4.7 - HOLY LIGHT + FANCY DISCORD
+   ========================================================================== */
+
+/* --- 0. FONT EMBEDS --- */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+/* --- 1. GLOBAL BACKGROUNDS & CONTAINERS --- */
+body, #mainpage {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ffcc33, #ff6699) !important;
+    background-size: 400% 400% !important;
+    animation: global-rainbow 20s ease infinite !important; /* Slightly slowed for performance */
+    background-attachment: fixed !important;
+}
+
+/* Custom Scrollbar for the Holy Theme */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #121212; }
+::-webkit-scrollbar-thumb { 
+    background: linear-gradient(#bf953f, #fcf6ba, #aa771c) !important; 
+    border-radius: 4px; 
+}
+
+/* Golden Playlist Frame */
+#rightpane, #queue {
+    border: 3px solid transparent !important;
+    border-image: linear-gradient(to bottom, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c) 1 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(0,0,0,0.8) !important;
+    background-color: #121212 !important;
+}
+
+/* Solid UI Containers with Heart Pattern */
+#chatwrap, #videowrap, .well, #userlistswrap, #messagebuffer {
+    background-color: #121212 !important; 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff1493' fill-opacity='0.07' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") !important;
+    background-repeat: repeat !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+}
+
+/* --- 2. GLOBAL CHAT UTILITIES --- */
+.chat-msg { background: transparent !important; }
+[class*="chat-msg-"] .username { color: inherit; text-shadow: inherit; }
+.userlist_item span { background-color: transparent !important; }
+
+/* Icon/Badge Spacing */
+#messagebuffer .chat-msg .badge,
+#messagebuffer .chat-msg .label,
+#messagebuffer .chat-msg > img,
+#messagebuffer .chat-msg .username img {
+    margin-right: 8px !important; 
+    margin-left: 4px !important;  
+}
+
+/* Emote Static Holy Gold Shine */
+.channel-emote { 
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out !important; 
+    cursor: pointer !important; 
+}
+
+.channel-emote:hover {
+    transform: scale(1.4) !important; 
+    filter: drop-shadow(0 0 8px #fff) 
+            drop-shadow(0 0 15px #FFD700) 
+            drop-shadow(0 0 25px #B8860B) 
+            brightness(1.5) 
+            contrast(1.2) !important;
+    z-index: 100; 
+    position: relative;
+}
+
+/* --- 3. CUSTOM USER THEMES --- */
+
+/* Ziggy (Golden & Blue Shine) */
+.chat-msg-Ziggy .username, .userlist_item[data-nick="Ziggy"] :is(span, strong, a) {
+    background: linear-gradient(90deg, #ffd700, #4facfe, #ffd700, #4facfe) !important;
+    background-size: 300% auto !important; -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 900 !important; animation: ziggy-glow 3s linear infinite !important;
+    display: inline-block !important; transition: filter 0.3s, transform 0.2s !important;
+}
+.chat-msg-Ziggy .username::after { content: " 🌟"; -webkit-text-fill-color: initial; }
+
+/* loop_60417 (Majolica Blue & Deep Teal with Heavy Blue Notes) */
+.chat-msg-loop_60417 .username, .userlist_item[data-nick="loop_60417"] :is(span, strong, a) {
+    color: #003d4d !important; /* Majolica Blue Base */
+    font-weight: 900 !important; 
+    display: inline-block !important;
+    text-shadow: 
+        0px 0px 2px #008080, /* Deep Teal glow */
+        1px 1px 3px #004fac, /* Heavy Blue notes */
+        0px 0px 5px #002e2e !important; /* Dark Teal depth */
+}
+.chat-msg-loop_60417 .username::after, .userlist_item[data-nick="loop_60417"] :is(span, strong, a)::after {
+    content: " ❤️"; display: inline-block; transition: transform 0.2s;
+    text-shadow: none !important; /* Keeps the heart clear of the blue glow */
+}
+.chat-msg-loop_60417 .username:hover::after {
+    animation: hooker-heartbeat 0.8s infinite !important;
+}
+
+/* _CuM_ (Triple Color Flashing) */
+.chat-msg-_CuM_ .username, .userlist_item[data-nick="_CuM_"] :is(span, strong, a) {
+    background: linear-gradient(90deg, #fffdd0, #4a3c31, #f5dcb5, #fffdd0) !important; 
+    background-size: 300% auto !important; -webkit-background-clip: text !important; 
+    -webkit-text-fill-color: transparent !important; font-weight: 900 !important;
+    display: inline-block !important; animation: cum-flash 0.4s steps(4, end) infinite alternate !important; 
+}
+
+/* --- USER THEME: PABST-BLEUCHEEZ (URINE YELLOW) --- */
+.chat-msg-pabst-bleucheez .username, 
+.userlist_item[data-nick="pabst-bleucheez"] :is(span, strong, a) {
+    color: #FFEA00 !important; /* Deep "Urine" Yellow */
+    font-weight: 900 !important;
+    display: inline-block !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5) !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* HOVER SHINE: Becomes "even more yellow" with a radiant glow */
+.chat-msg-pabst-bleucheez .username:hover,
+.userlist_item[data-nick="pabst-bleucheez"] :is(span, strong, a):hover {
+    color: #FFFF00 !important; /* Brightest Yellow */
+    text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFEA00 !important;
+    transform: scale(1.05);
+}
+
+.chat-msg-pabst-bleucheez .username::after {
+    content: " 🧀" !important;
+    text-shadow: none !important;
+}
+
+.chat-msg-pabst-bleucheez {
+    border-left: 5px solid #FFEA00 !important;
+    background: linear-gradient(to right, rgba(255, 234, 0, 0.1), transparent) !important;
+}
+
+/* --- USER THEME: AKADOSAN (SOFT NEON) --- */
+.chat-msg-Akadosan .username, .chat-msg-akadosan .username {
+    color: #ff00ff !important; font-weight: 900 !important; display: inline-block !important;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px rgba(255, 0, 255, 0.5) !important;
+    animation: neon-soft-pulse 3s ease-in-out infinite alternate !important;
+}
+.chat-msg-Akadosan .username::after, .chat-msg-akadosan .username::after { content: " 🌴" !important; filter: drop-shadow(0 0 3px #ff00ff); }
+
+/* --- ZIGGY & COKEZILLA --- */
+.chat-msg-Ziggy .username { background: linear-gradient(90deg, #ffd700, #4facfe, #ffd700); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: ziggy-glow 3s linear infinite; font-weight: 900; display: inline-block; }
+.chat-msg-Ziggy .username::after { content: " 🌟"; -webkit-text-fill-color: initial; }
+.chat-msg-KevinRNash92 .username, .chat-msg-cokezilla69 .username { color: #f40009 !important; font-weight: 900; text-shadow: 0 0 2px #fff, 0 0 8px #f40009 !important; }
+.chat-msg-KevinRNash92 .username::after, .chat-msg-cokezilla69 .username::after { content: " 🥤"; }
+
+/* --- ANIMATIONS & UTILITIES --- */
+@keyframes global-rainbow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes ziggy-glow { to { background-position: 200% center; } }
+@keyframes neon-soft-pulse { 0% { opacity: 0.9; text-shadow: 0 0 5px #ff00ff; } 100% { opacity: 1; text-shadow: 0 0 8px #ff00ff, 0 0 12px rgba(255, 0, 255, 0.4); } }
+
+.channel-emote:hover { transform: scale(1.4) rotate(5deg) !important; z-index: 100; position: relative; }
+
+/* --- 4. KEYFRAMES / ANIMATIONS --- */
+@keyframes ziggy-glow { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
+@keyframes hooker-heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.5); filter: brightness(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.5); filter: brightness(1.2); }
+    100% { transform: scale(1); }
+}
+@keyframes cum-flash {
+    0% { background-position: 0% center; filter: brightness(1); }
+    50% { background-position: 100% center; filter: brightness(1.8) contrast(150%); }
+    100% { background-position: 0% center; filter: brightness(1); }
+}
+
+/* --- Deprecated Bomb Cursor Section --- */
+/* (This section has been logically removed by V4.7 JavaScript, leaving styles here for reference) */
+body, a, button, .pointer { cursor: auto; }
+
+/* Akadosan bold pink fix */
+.chat-msg-Akadosan .username {
+    color: #F91880 !important; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+
+#chatline { transition: background-color 0.3s ease; }
+.is-translating { background-color: #ffe0b2 !important; color: #333 !important; cursor: wait; }
+
+@keyframes flowingPrism {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.chat-msg-Teeffs .username {
+    background: linear-gradient(90deg, #ff7b54, #ffd56b, #93e4c1, #3fa7d6, #8a5a99, #ff7b54);
+    background-size: 300% 300%;
+    color: transparent !important; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flowingPrism 5s ease infinite;
+    font-weight: bold;
+}
+
+.chat-msg-CKBbot0 .username {
+    color: #E2E8F0 !important; 
+    text-shadow: 0 0 3px #ffffff, 0 0 8px #94a3b8; 
+    font-weight: bold;
+}
+
+.chat-msg-CKBbot0 .username::before {
+    content: "🤖 ";
+    display: inline-block;
+    margin-right: 4px;
+    text-shadow: none; 
+}
+
+@keyframes kentoShift {
+    0%   { color: #39FF14; text-shadow: 0 0 4px rgba(57, 255, 20, 0.3); } 
+    25%  { color: #FFEA00; text-shadow: 0 0 4px rgba(255, 234, 0, 0.3); } 
+    50%  { color: #00E5FF; text-shadow: 0 0 4px rgba(0, 229, 255, 0.3); } 
+    75%  { color: #FF66CC; text-shadow: 0 0 4px rgba(255, 102, 204, 0.3); } 
+    100% { color: #39FF14; text-shadow: 0 0 4px rgba(57, 255, 20, 0.3); } 
+}
+
+.chat-msg-KentoMeowhara .username {
+    animation: kentoShift 8s ease-in-out infinite;
+    font-weight: bold;
+}
+
+@keyframes mattePaintFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+
+.chat-msg-Edwina .username {
+    background: repeating-linear-gradient(
+        -45deg,
+        #E07A5F, 
+        #E07A5F 8px, 
+        #D46A51 8px, 
+        #D46A51 16px 
+    );
+    background-size: 200% 200%;
+    color: transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: mattePaintFlow 4s linear infinite;
+    font-weight: bold;
+}
+
+.chat-msg-COLTCABUNNY .username {
+    color: #FFC0CB !important; 
+    text-shadow: 
+        0px 0px 4px #FFFFFF,
+        0px 0px 6px #FFFFFF,
+        1px 1px 2px #FFFFFF,
+        -1px -1px 2px #FFFFFF;
+    font-weight: bold;
+    position: relative; 
+    display: inline-block;
+}
+
+@keyframes bunnySprint {
+    0%   { left: -20px; opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+.chat-msg-COLTCABUNNY .username::after {
+    content: "🐇";
+    position: absolute;
+    top: -4px; 
+    animation: bunnySprint 3s linear infinite;
+    pointer-events: none; 
+    text-shadow: none !important; 
+    color: initial !important; 
+}
+
+.chat-msg-Cokezilla69 .username {
+    color: #C62828 !important; 
+    text-shadow: 2px 2px 0px #4A0404; 
+    font-weight: bold;
+    position: relative; 
+    display: inline-block;
+}
+
+@keyframes beanInject {
+    0% { left: -30px; opacity: 0; transform: scale(0.5) rotate(-45deg); }
+    20% { left: -5px; opacity: 1; transform: scale(1.2) rotate(0deg); }
+    40% { left: 10px; opacity: 0; transform: scale(0.1) rotate(20deg); }
+    100% { left: 10px; opacity: 0; }
+}
+
+.chat-msg-Cokezilla69 .username::before {
+    content: "🫘"; 
+    position: absolute;
+    top: -2px; 
+    animation: beanInject 4s ease-in infinite;
+    pointer-events: none; 
+    text-shadow: none !important; 
+    color: initial !important; 
+}
+
+@keyframes turtlePower {
+    0%   { text-shadow: 2px 2px 0px #0000CD; } 
+    25%  { text-shadow: 2px 2px 0px #FF0000; } 
+    50%  { text-shadow: 2px 2px 0px #FF7F00; } 
+    75%  { text-shadow: 2px 2px 0px #800080; } 
+    100% { text-shadow: 2px 2px 0px #0000CD; } 
+}
+
+@keyframes pizzaToss {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.chat-msg-SuperSka .username {
+    color: #74B72E !important; 
+    font-family: "Impact", sans-serif; 
+    letter-spacing: 1px;
+    animation: turtlePower 8s infinite;
+    display: inline-block; 
+}
+
+.chat-msg-SuperSka .username::after {
+    content: "🍕";
+    display: inline-block;
+    margin-left: 6px;
+    animation: pizzaToss 3s linear infinite;
+    text-shadow: none !important; 
+}
+
+@keyframes oceanWaves {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.chat-msg-VadersBigVan .username {
+    background: linear-gradient(-45deg, #0277BD, #00A8CC, #26A69A, #0277BD);
+    background-size: 300% 300%;
+    color: transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: oceanWaves 6s ease-in-out infinite;
+    font-weight: bold;
+}
+
+.chat-msg-VadersBigVan .username::before {
+    content: "🐟 ";
+    display: inline-block;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: initial !important; 
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+}
+
+@keyframes clownFiesta {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.chat-msg-JuggAnon .username {
+    background: linear-gradient(90deg, #FF0000, #FFEA00, #39FF14, #00E5FF, #FF00FF, #FF0000);
+    background-size: 300% 300%;
+    color: transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: clownFiesta 4s linear infinite;
+    font-weight: bold;
+}
+
+.chat-msg-JuggAnon .username::before {
+    content: "🤡 ";
+    display: inline-block;
+    -webkit-text-fill-color: initial !important;
+    color: initial !important;
+    text-shadow: none !important;
+}
+
+/* --- PROJECT CKB UNIFIED STYLES --- */
+
+/* Wrapper to safely contain the absolute logo */
+.ckb-motd-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 220px; /* Ensures the box doesn't collapse smaller than the logo */
+  padding-top: 10px;
+}
+
+/* The Top-Left 200x200 Logo */
+.ckb-top-left-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #ff003c;
+  box-shadow: 4px 4px 0px #ff003c;
+  object-fit: cover; /* Prevents the image from squishing/stretching */
+  z-index: 10;
+}
+
+/* The Main Collapsible Box Container */
+.ckb-box-container {
+  background: #141418;
+  border: 2px solid #ff003c;
+  box-shadow: 8px 8px 0px #ff003c;
+  padding: 20px 30px;
+  max-width: 650px;
+  width: 100%;
+  margin: 20px auto; /* Centers the boxes */
+  font-family: 'Courier New', Courier, monospace;
+  color: #e0e0e0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* The Clickable Headers */
+.ckb-box-summary {
+  text-transform: uppercase;
+  color: #ff003c;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  outline: none;
+  list-style: none;
+}
+
+.ckb-box-summary::-webkit-details-marker {
+  display: none;
+}
+
+.ckb-box-summary::before {
+  content: "[+] ";
+  color: #00ffcc;
+}
+
+details[open] .ckb-box-summary::before {
+  content: "[-] ";
+}
+
+details[open] .ckb-box-summary {
+  border-bottom: 2px dashed #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* --- FAQ Specific Styling --- */
+.ckb-box-container .faq-item { margin-bottom: 20px; }
+.ckb-box-container .faq-q { font-weight: bold; color: #00ffcc; font-size: 1.15em; margin-bottom: 5px; text-transform: uppercase; }
+.ckb-box-container .faq-q::before { content: "> "; color: #ff003c; }
+.ckb-box-container .faq-a { padding-left: 20px; border-left: 2px solid #444; line-height: 1.5; color: #b0b0b0; font-size: 0.95em; transition: all 0.3s ease; }
+.ckb-box-container .faq-item:hover .faq-a { border-left: 2px solid #00ffcc; color: #ffffff; }
+
+/* --- Mission Statement Styling --- */
+.ckb-mission-title { color: #00ffcc; text-transform: uppercase; margin: 10px 0 5px 0; font-size: 1.4em; }
+.ckb-mission-sub { color: #b0b0b0; font-style: italic; margin-bottom: 15px; font-size: 0.9em; }
+.ckb-mission-text { line-height: 1.5; margin-bottom: 15px; font-size: 0.95em; }
+.ckb-highlight { color: #ff003c; font-weight: bold; }
+.ckb-highlight-alt { color: #00ffcc; font-weight: bold; }
+.ckb-list-title { color: #00ffcc; font-weight: bold; margin-bottom: 10px; font-size: 1.1em; }
+.ckb-mission-list { list-style: none; padding-left: 15px; border-left: 2px solid #444; margin: 0 0 20px 0; color: #b0b0b0; font-size: 0.95em;}
+.ckb-mission-list li { margin-bottom: 10px; }
+.ckb-mission-list strong { color: #fff; }
+.ckb-quote { border-left: 2px solid #ff003c; margin: 0; font-style: italic; color: #e0e0e0; background: rgba(255,0,60,0.05); padding: 15px; }
+
+/* --- Discord Button Styling --- */
+.ckb-discord-btn {
+  display: inline-block;
+  background: transparent;
+  color: #00ffcc;
+  border: 2px solid #00ffcc;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.ckb-discord-btn:hover {
+  background: #00ffcc;
+  color: #141418;
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+/* --- Added Fancy Exploding Discord Button Animation --- */
+#fancy-discord-btn {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 6px 12px; /* Slightly larger padding for fancy font */
+    background-color: #5865F2; /* Standard Discord Blurple */
+    color: white !important; /* Text is white so it can be read on the button */
+    font-family: 'MedievalSharp', cursive !important; /* Fancy Old Fashioned Font */
+    font-size: 1.15em !important; /* Increased size for fancy font readability */
+    font-weight: normal !important; /* Already bold, normal makes it look cleaner */
+    border-radius: 3px; 
+    text-decoration: none;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+@keyframes sparkle {
+    0% { box-shadow: 0 0 5px #fff, 0 0 10px #5865F2; transform: scale(1); }
+    50% { box-shadow: 0 0 15px #fff, 0 0 25px #5865F2, 0 0 35px #fff; transform: scale(1.05); }
+    100% { box-shadow: 0 0 5px #fff, 0 0 10px #5865F2; transform: scale(1); }
+}
+
+#fancy-discord-btn:hover {
+    background-color: #4752C4; /* Darker blurple hover state */
+    animation: sparkle 0.8s infinite ease-in-out;
+}
+
+@keyframes explode {
+    0% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+    40% {
+        transform: scale(1.8) rotate(10deg);
+        filter: brightness(2) saturate(2);
+        opacity: 0.9;
+    }
+    100% { 
+        transform: scale(3) rotate(-15deg); 
+        opacity: 0; 
+        filter: brightness(3);
+    }
+}
+
+#fancy-discord-btn.exploding {
+    animation: explode 0.6s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none; 
+}
+
+/* --- CHAT BACKGROUND STABILIZATION --- */
+#messagebuffer {
+    background-color: #0a0a0a !important; /* Deep solid black */
+    background-image: none !important;    /* Removes the heart pattern for GIF clarity */
+    box-shadow: inset 0 0 20px rgba(0,0,0,1) !important; /* Adds depth without movement */
+}
+
+/* Optional: Subtle border to separate the solid chat from the rainbow background */
+#chatwrap {
+    border: 1px solid #333 !important;
+}
