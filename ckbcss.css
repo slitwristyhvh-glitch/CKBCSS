@@ -551,3 +551,43 @@ details[open] .ckb-box-summary {
 #chatwrap {
     border: 1px solid #333 !important;
 }
+
+/* --- USER THEME: SPIDEY (BLUE CHROME PURPLE) --- */
+@keyframes chrome-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.chat-msg-Spidey .username, 
+.userlist_item[data-nick="Spidey"] :is(span, strong, a) {
+    background: linear-gradient(
+        135deg, 
+        #00d2ff 0%,   /* Electric Blue */
+        #3a7bd5 25%,  /* Deep Blue */
+        #9d50bb 50%,  /* Purple */
+        #6e48aa 75%,  /* Royal Violet */
+        #00d2ff 100%  /* Back to Blue */
+    ) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+    
+    /* The Chrome Reflection Effect */
+    filter: drop-shadow(0px 0px 1px rgba(255,255,255,0.8)) 
+            contrast(1.2) 
+            brightness(1.1) !important;
+    
+    animation: chrome-shimmer 4s linear infinite !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Spidey's Icon */
+.chat-msg-Spidey .username::before {
+    content: "🕷️ ";
+    -webkit-text-fill-color: initial; /* Keeps the spider emoji from being transparent */
+    filter: drop-shadow(0 0 2px #9d50bb);
+}
