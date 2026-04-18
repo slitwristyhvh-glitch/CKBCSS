@@ -591,3 +591,50 @@ details[open] .ckb-box-summary {
     -webkit-text-fill-color: initial; /* Keeps the spider emoji from being transparent */
     filter: drop-shadow(0 0 2px #9d50bb);
 }
+
+
+/* --- USER THEME: LATRELLSPREWELL (SLIME & URINE) --- */
+@keyframes bubbling-slime {
+    0% { transform: skewX(-2deg) scaleY(1); filter: hue-rotate(0deg); }
+    25% { transform: skewX(2deg) scaleY(1.05); filter: brightness(1.2); }
+    50% { transform: skewX(-1deg) scaleY(0.95); filter: hue-rotate(10deg); }
+    75% { transform: skewX(1deg) scaleY(1.02); filter: brightness(0.8); }
+    100% { transform: skewX(-2deg) scaleY(1); filter: hue-rotate(0deg); }
+}
+
+@keyframes drip-flow {
+    0% { text-shadow: 0 0 0 #8B8000, 0 0 2px #556B2F; }
+    50% { text-shadow: 0 5px 3px #8B8000, 0 10px 10px rgba(139, 128, 0, 0.3); }
+    100% { text-shadow: 0 0 0 #8B8000, 0 0 2px #556B2F; }
+}
+
+.chat-msg-latrellsprewell .username, 
+.userlist_item[data-nick="latrellsprewell"] :is(span, strong, a) {
+    background: linear-gradient(to bottom, #CCFF00 0%, #8B8000 50%, #4B5320 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+    
+    /* Animations */
+    animation: bubbling-slime 3s ease-in-out infinite, drip-flow 4s infinite !important;
+    
+    /* The "Crusty" texture */
+    filter: drop-shadow(1px 1px 0px #222) contrast(1.5) !important;
+    position: relative;
+}
+
+/* The Drip/Slime Emojis */
+.chat-msg-latrellsprewell .username::before {
+    content: "☣️ ";
+    -webkit-text-fill-color: initial;
+    filter: sepia(1) saturate(5) hue-rotate(20deg);
+}
+
+.chat-msg-latrellsprewell .username::after {
+    content: " 💧";
+    -webkit-text-fill-color: initial;
+    filter: hue-rotate(45deg) brightness(0.7);
+    display: inline-block;
+    animation: bubbling-slime 1.5s infinite reverse;
+}
